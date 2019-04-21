@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_today"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="今日计划" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_studyplan"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="学习任务" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_complete"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="完成进度" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
