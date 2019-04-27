@@ -3,6 +3,7 @@ package com.sereyna.easyplan;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,29 +13,50 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
+import java.util.ArrayList;
+
+
+import com.sereyna.easyplan.bean.*;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-	private TextView mTextMessage;
+	private fragment_main fragment1 = new fragment_main();
+	private fragment_tasklist fragment2 = new fragment_tasklist();
+	private fragment_complete fragment3 = new fragment_complete();
+	private Fragment[] fragments;
+	private int lastShowFragment = 0;
+
 	private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
 			= new BottomNavigationView.OnNavigationItemSelectedListener() {
 		@Override
 		public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 			switch (item.getItemId()) {
-				case R.id.navigation_home:
-					mTextMessage.setText(R.string.title_today);
+				case R.id.navigation_today:
+					if (lastShowFragment != 0) {
+						switchFrament(lastShowFragment, 0);
+						lastShowFragment = 0;
+					}
 					return true;
-				case R.id.navigation_dashboard:
-					mTextMessage.setText(R.string.title_tasklist);
+				case R.id.navigation_tasklist:
+					if (lastShowFragment != 1) {
+						switchFrament(lastShowFragment, 1);
+						lastShowFragment = 1;
+					}
 					return true;
-				case R.id.navigation_notifications:
-					mTextMessage.setText(R.string.title_complete);
+				case R.id.navigation_complete:
+					if (lastShowFragment != 2) {
+						switchFrament(lastShowFragment, 2);
+						lastShowFragment = 2;
+					}
 					return true;
 			}
+
 			return false;
 		}
 	};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +73,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-		mTextMessage = (TextView) findViewById(R.id.message);
+        
 		BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 		bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+		initFragments();
     }
 
     @Override
@@ -98,10 +120,11 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_today) {
             // Handle the camera action
+
         } else if (id == R.id.nav_studyplan) {
 
         } else if (id == R.id.nav_complete) {
-
+			//mTextMessage.setText(R.string.title_today);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -115,5 +138,24 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+	public void switchFrament(int lastIndex, int index) {
+		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+		transaction.hide(fragments[lastIndex]);
+		if (!fragments[index].isAdded()) {
+			transaction.add(R.id.lay_container, fragments[index]);
+		}
+		transaction.show(fragments[index]).commitAllowingStateLoss();
+	}
+
+	private void initFragments() {
+		fragments = new Fragment[]{fragment1, fragment2, fragment3};
+		lastShowFragment = 0;
+		getSupportFragmentManager()
+				.beginTransaction()
+				.add(R.id.lay_container, fragment1)
+				.show(fragment1)
+				.commit();
+	}
 
 }
