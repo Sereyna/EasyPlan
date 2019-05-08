@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity
 	private fragment_main fragment1 = new fragment_main();
 	private fragment_tasklist fragment2 = new fragment_tasklist();
 	private fragment_complete fragment3 = new fragment_complete();
+	private fragment_me fragment4 = new fragment_me();
 	private Fragment[] fragments;
 	private int lastShowFragment = 0;
 
@@ -49,6 +50,12 @@ public class MainActivity extends AppCompatActivity
 					if (lastShowFragment != 2) {
 						switchFrament(lastShowFragment, 2);
 						lastShowFragment = 2;
+					}
+					return true;
+				case R.id.navigation_me:
+					if (lastShowFragment != 3) {
+						switchFrament(lastShowFragment, 3);
+						lastShowFragment = 3;
 					}
 					return true;
 			}
@@ -149,7 +156,7 @@ public class MainActivity extends AppCompatActivity
 	}
 
 	private void initFragments() {
-		fragments = new Fragment[]{fragment1, fragment2, fragment3};
+		fragments = new Fragment[]{fragment1, fragment2, fragment3, fragment4};
 		lastShowFragment = 0;
 		getSupportFragmentManager()
 				.beginTransaction()

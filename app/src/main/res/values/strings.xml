@@ -3,6 +3,11 @@
     <string name="title_today">今日计划</string>
     <string name="title_tasklist">任务列表</string>
     <string name="title_complete">完成情况</string>
+    <string name="title_me">我的</string>
+    <string name="content_main_jinri">今日必做</string>
+    <string name="content_main_yicixing">一次性任务</string>
+    <string name="content_main_yiwanc">已完成</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
