@@ -12,6 +12,11 @@ import android.view.MenuItem;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 
+import com.sereyna.easyplan.fragment.main.fragment_complete;
+import com.sereyna.easyplan.fragment.main.fragment_main;
+import com.sereyna.easyplan.fragment.main.fragment_me;
+import com.sereyna.easyplan.fragment.main.fragment_tasklist;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

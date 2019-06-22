@@ -1,4 +1,4 @@
-package com.sereyna.easyplan;
+package com.sereyna.easyplan.fragment.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
+
+import com.sereyna.easyplan.R;
 
 import static android.support.constraint.Constraints.TAG;
 

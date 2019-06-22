@@ -1,4 +1,4 @@
-package com.sereyna.easyplan;
+package com.sereyna.easyplan.fragment.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sereyna.easyplan.R;
 
 public class fragment_complete extends Fragment {
 
