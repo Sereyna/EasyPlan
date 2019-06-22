@@ -54,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
 		usernameEditText.addTextChangedListener(afterTextChangedListener);
 		passwordEditText.addTextChangedListener(afterTextChangedListener);
 
+		// 注册按钮
 		signupButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {

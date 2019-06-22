@@ -69,6 +69,9 @@ public class LoginActivity extends AppCompatActivity {
 									passwordEditText.getText().toString());
 							if ("success".equals(result)) {
 								Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+								Bundle bundle = new Bundle();
+								bundle.putString("username", usernameEditText.getText().toString());
+								intent.putExtra("login_bun", bundle);
 								startActivity(intent);
 								Looper.prepare();
 								Toast.makeText(getBaseContext(),"登录成功",Toast.LENGTH_LONG).show();
