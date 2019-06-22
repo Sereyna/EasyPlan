@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/xue"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisteActivity"></activity>
+        <activity
+            android:label="@string/action_sign_up"
+            android:name=".SignUpActivity"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/action_sign_in">

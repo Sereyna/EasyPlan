@@ -20,6 +20,12 @@
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
 
+    <!--activity_registe-->
+    <string name="action_sign_up">注册</string>
+    <string name="prompt_password_repeat">请再次输入相同密码</string>
+
     <string name="invalid_username">不合法的用户名</string>
     <string name="invalid_password">密码位数必须>5</string>
+
+
 </resources>
