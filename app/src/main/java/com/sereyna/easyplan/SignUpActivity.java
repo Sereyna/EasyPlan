@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.sereyna.easyplan.utils.ConnToServer;
+import com.sereyna.easyplan.dao.UserDao;
 
 import java.io.IOException;
 
@@ -61,9 +61,8 @@ public class SignUpActivity extends AppCompatActivity {
 				new Thread(new Runnable() {
 					@Override
 					public void run() {
-						ConnToServer connToServer = new ConnToServer();
 						try {
-							String result = connToServer.signup_doPost(usernameEditText.getText().toString(),
+							String result = UserDao.signup_doPost(usernameEditText.getText().toString(),
 									passwordEditText.getText().toString());
 							if ("success".equals(result)) {
 								Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);

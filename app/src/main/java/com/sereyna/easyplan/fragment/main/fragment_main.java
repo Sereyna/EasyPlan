@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
+import android.widget.ListView;
 
 import com.sereyna.easyplan.R;
 
@@ -32,6 +33,7 @@ public class fragment_main extends Fragment {
 
 		setHasOptionsMenu(true);
 
+		//ListView tasklist = (ListView) v.findViewById();
 		return v;
 	}
 

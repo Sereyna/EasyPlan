@@ -1,16 +1,23 @@
 package com.sereyna.easyplan;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.Toast;
 
 import com.sereyna.easyplan.fragment.main.fragment_complete;
 import com.sereyna.easyplan.fragment.main.fragment_main;
@@ -20,6 +27,7 @@ import com.sereyna.easyplan.fragment.main.fragment_tasklist;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+	private long mExitTime; //连续按两次后退键的时差
 	private fragment_main fragment1 = new fragment_main();
 	private fragment_tasklist fragment2 = new fragment_tasklist();
 	private fragment_complete fragment3 = new fragment_complete();
@@ -89,7 +97,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
+/*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -105,6 +113,7 @@ public class MainActivity extends AppCompatActivity
         
 		BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 		bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
 		initFragments();
     }
@@ -151,4 +160,26 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //再按一次后退键退出
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		//判断用户是否点击了“返回键”
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			//与上次点击返回键时刻作差
+			if ((System.currentTimeMillis() - mExitTime) > 2000) {
+				//大于2000ms则认为是误操作，使用Toast进行提示
+				Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+				//并记录下本次点击“返回键”的时刻，以便下次进行判断
+				mExitTime = System.currentTimeMillis();
+			} else {
+				//小于2000ms则认为是用户确实希望退出程序-调用System.exit()方法进行退出
+				finish();
+				System.exit(0);
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
 }

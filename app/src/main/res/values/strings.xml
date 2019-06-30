@@ -16,7 +16,7 @@
     <string name="action_settings">Settings</string>
 
     <!--activity_login-->
-    <string name="prompt_email">用户名</string>
+    <string name="prompt_email">邮箱</string>
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
 
@@ -27,5 +27,16 @@
     <string name="invalid_username">不合法的用户名</string>
     <string name="invalid_password">密码位数必须>5</string>
 
-
+    <!--add_task_view -->
+    <string name="addtitle">添加新任务</string>
+    <string name="addtaskname">任务名：</string>
+    <string name="addtaskcate">任务类别：</string>
+    <string name="addtaskcate1">无类别</string>
+    <string name="addtaskdeadline">到期时间：</string>
+    <string name="addtasktype">完成类型：</string>
+    <string name="radio1">一次性</string>
+    <string name="radio2">固定循环</string>
+    <string name="radio3">艾宾浩斯</string>
+    <string name="addtaskok">确定</string>
+    <string name="addtaskxun">循环周期天数：</string>
 </resources>
